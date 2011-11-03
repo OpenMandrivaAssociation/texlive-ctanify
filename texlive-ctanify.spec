@@ -1,3 +1,9 @@
+# revision 24061
+# category Package
+# catalog-ctan /support/ctanify
+# catalog-date 2011-09-21 00:42:21 +0200
+# catalog-license lppl
+# catalog-version 1.1
 Name:		texlive-ctanify
 Version:	1.1
 Release:	1
@@ -48,6 +54,7 @@ install/ tree.).
 %doc %{_texmfdistdir}/doc/support/ctanify/ctanify.pdf
 %doc %{_mandir}/man1/ctanify.1*
 %doc %{_texmfdir}/doc/man/man1/ctanify.man1.pdf
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -64,3 +71,5 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
