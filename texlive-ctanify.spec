@@ -1,12 +1,12 @@
-# revision 24061
+# revision 26318
 # category Package
 # catalog-ctan /support/ctanify
-# catalog-date 2011-09-21 00:42:21 +0200
+# catalog-date 2011-09-22 08:16:49 +0200
 # catalog-license lppl
 # catalog-version 1.1
 Name:		texlive-ctanify
 Version:	1.1
-Release:	2
+Release:	3
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/ctanify
