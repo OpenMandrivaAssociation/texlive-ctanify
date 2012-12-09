@@ -1,12 +1,12 @@
-# revision 26318
+# revision 24061
 # category Package
 # catalog-ctan /support/ctanify
-# catalog-date 2011-09-22 08:16:49 +0200
+# catalog-date 2011-09-21 00:42:21 +0200
 # catalog-license lppl
 # catalog-version 1.1
 Name:		texlive-ctanify
 Version:	1.1
-Release:	3
+Release:	2
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/ctanify
@@ -61,3 +61,17 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+
+
+%changelog
+* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.1-2
++ Revision: 750663
+- Rebuild to reduce used resources
+
+* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.1-1
++ Revision: 718178
+- texlive-ctanify
+- texlive-ctanify
+- texlive-ctanify
+- texlive-ctanify
+
