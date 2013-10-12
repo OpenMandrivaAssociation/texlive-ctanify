@@ -1,12 +1,12 @@
-# revision 24061
+# revision 30921
 # category Package
 # catalog-ctan /support/ctanify
-# catalog-date 2011-09-21 00:42:21 +0200
+# catalog-date 2013-06-19 07:13:38 +0200
 # catalog-license lppl
-# catalog-version 1.1
+# catalog-version 1.4
 Name:		texlive-ctanify
-Version:	1.1
-Release:	2
+Version:	1.4
+Release:	1
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/ctanify
@@ -41,10 +41,10 @@ install/ tree.).
 %files
 %{_bindir}/ctanify
 %{_texmfdistdir}/scripts/ctanify/ctanify
-%doc %{_texmfdistdir}/doc/support/ctanify/README
-%doc %{_texmfdistdir}/doc/support/ctanify/ctanify.pdf
+%doc %{_texmfdistdir}/doc/latex/ctanify/README
+%doc %{_texmfdistdir}/doc/latex/ctanify/ctanify.pdf
 %doc %{_mandir}/man1/ctanify.1*
-%doc %{_texmfdir}/doc/man/man1/ctanify.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/ctanify.man1.pdf
 
 #-----------------------------------------------------------------------
 %prep
@@ -58,20 +58,6 @@ pushd %{buildroot}%{_bindir}
     ln -sf %{_texmfdistdir}/scripts/ctanify/ctanify ctanify
 popd
 mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
+cp -fpar texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
-mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.1-2
-+ Revision: 750663
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.1-1
-+ Revision: 718178
-- texlive-ctanify
-- texlive-ctanify
-- texlive-ctanify
-- texlive-ctanify
-
+mv %{buildroot}%{_texmfdistdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
