@@ -6,7 +6,7 @@
 # catalog-version 1.4
 Name:		texlive-ctanify
 Version:	1.4
-Release:	2
+Release:	3
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/ctanify
