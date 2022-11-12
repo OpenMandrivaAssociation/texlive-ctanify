@@ -1,18 +1,12 @@
-# revision 30921
-# category Package
-# catalog-ctan /support/ctanify
-# catalog-date 2013-06-19 07:13:38 +0200
-# catalog-license lppl
-# catalog-version 1.4
 Name:		texlive-ctanify
-Version:	1.9.1
-Release:	2
+Version:	44129
+Release:	1
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/ctanify
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -30,12 +24,12 @@ distribution. (The TDS ZIP file will be installed in the CTAN
 install/ tree.).
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -48,14 +42,14 @@ install/ tree.).
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdistdir}/scripts/ctanify/ctanify ctanify
+ln -sf %{_texmfdistdir}/scripts/ctanify/ctanify ctanify
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
