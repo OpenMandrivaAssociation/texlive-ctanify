@@ -1,6 +1,6 @@
 Name:		texlive-ctanify
 Version:	44129
-Release:	1
+Release:	2
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/ctanify
