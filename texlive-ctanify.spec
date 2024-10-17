@@ -3,7 +3,7 @@ Version:	44129
 Release:	2
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/support/ctanify
+URL:		https://www.ctan.org/tex-archive/support/ctanify
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.doc.r%{version}.tar.xz
