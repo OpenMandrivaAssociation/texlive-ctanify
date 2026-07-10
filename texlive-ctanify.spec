@@ -1,57 +1,32 @@
-Name:		texlive-ctanify
-Version:	44129
-Release:	2
+%global tl_name ctanify
+%global tl_revision 44129
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.9.1
+Release:	%{tl_revision}.1
 Summary:	Prepare a package for upload to CTAN
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/support/ctanify
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.doc.r%{version}.tar.xz
+License:	lppl1.3c
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/ctanify.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
-Provides:	texlive-ctanify.bin = %{EVRD}
+%texlive_base_requires
+Requires:	texlive(ctanify.bin)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Given a list of filenames, ctanify creates a tarball (a .tar.gz
-file) with the files laid out in CTAN's preferred structure.
-The tarball additionally contains a ZIP (.zip) file with copies
-of all files laid out in the standard TeX Directory Structure
-(TDS), which may be used by those intending to install the
-package, or by those who need to incorporate it in a
-distribution. (The TDS ZIP file will be installed in the CTAN
-install/ tree.).
+Given a list of filenames, ctanify creates a tarball (a .tar.gz file)
+with the files laid out in CTAN's preferred structure. By default this
+tarball additionally contains a ZIP (.zip) file with copies of all files
+laid out in the standard TeX Directory Structure (TDS), which may be
+used by those intending to install the package, or by those who need to
+incorporate it in a distribution. (The TDS ZIP file will be installed in
+the CTAN install/ tree.) Given that CTAN and TeX Live are not fond of
+.tds.zip files for small and/or otherwise straightforward packages,
+ctanify has now been provided with an option that prevents the creation
+and inclusion of such a .tds.zip file.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_bindir}/ctanify
-%{_texmfdistdir}/scripts/ctanify/ctanify
-%doc %{_texmfdistdir}/doc/latex/ctanify/README
-%doc %{_texmfdistdir}/doc/latex/ctanify/ctanify.pdf
-%doc %{_mandir}/man1/ctanify.1*
-%doc %{_texmfdistdir}/doc/man/man1/ctanify.man1.pdf
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-ln -sf %{_texmfdistdir}/scripts/ctanify/ctanify ctanify
-popd
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
-mkdir -p %{buildroot}%{_mandir}/man1
-mv %{buildroot}%{_texmfdistdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
