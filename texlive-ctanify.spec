@@ -1,5 +1,6 @@
 %global tl_name ctanify
 %global tl_revision 44129
+%global tl_bin_links ctanify:%{_texmfdistdir}/scripts/ctanify/ctanify
 
 Name:		texlive-%{tl_name}
 Epoch:		1
@@ -15,6 +16,8 @@ BuildArch:	noarch
 BuildSystem:	texlive
 Requires:	texlive(ctanify.bin)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
+Provides:	texlive(%{tl_name}.bin) = %{tl_revision}
+Provides:	texlive-%{tl_name}.bin = %{EVRD}
 
 %description
 Given a list of filenames, ctanify creates a tarball (a .tar.gz file)
